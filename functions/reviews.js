@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-exports.handler = async (event, context) {
+exports.handler = async (event, context) => {
     if (event.httpMethod !== "POST") {
         return {
             statusCode: 200,
