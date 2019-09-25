@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 
 exports.handler = function(event, context, callback) {
+    if (event.httpMethod !== "POST") {
+        callback(null, {
+            statusCode: 200,
+            headers,
+            body: "This was not a POST request!"
+            });
+    }
     const parsedBody = JSON.parse(event.body)
     const url = "mongodb+srv://eric:pUNTOFHI6IGZ3EIZ@cluster0-4coym.gcp.mongodb.net/test?retryWrites=true&w=majority"
     mongoose.connect(url, {
@@ -14,7 +21,7 @@ exports.handler = function(event, context, callback) {
         name: String,
         jobTitle: String,
         reviewBody: String
-      });
+    });
     const Review = mongoose.model('review', ReviewSchema);
 
 
