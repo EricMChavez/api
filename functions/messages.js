@@ -22,18 +22,18 @@ exports.handler = async (event, context) => {
 
     const Schema = mongoose.Schema;
 
-    const ReviewSchema = new Schema({
+    const MessageSchema = new Schema({
         name: String,
-        jobTitle: String,
-        reviewBody: String
+        email: String,
+        messageBody: String
     });
-    const Review = mongoose.model('review', ReviewSchema);
+    const Message = mongoose.model('message', MessageSchema);
 
 
-    const review = new Review({
+    const message = new Message({
         name: parsedBody.name,
-        jobTitle: parsedBody.jobTitle,
-        reviewBody: parsedBody.reviewBody,
+        email: parsedBody.email,
+        messageBody: parsedBody.messageBody,
     })
     await review.save()
     return {
@@ -47,4 +47,3 @@ exports.handler = async (event, context) => {
         body: "Thank you for your review"
     }
 }
-
