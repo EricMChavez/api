@@ -4,7 +4,11 @@ exports.handler = function(event, context, callback) {
     if (event.httpMethod !== "POST") {
         callback(null, {
             statusCode: 200,
-            headers,
+            headers: {
+                "content-type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, PUT",
+                },
             body: "This was not a POST request!"
             });
     }
