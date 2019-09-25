@@ -11,7 +11,7 @@ export default createModel(
         name: String,
         email: String,
         messageBody: String
-    }
+    },
     { timestamps: true },
   ),
 );

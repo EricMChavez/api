@@ -11,7 +11,7 @@ export default createModel(
         name: String,
         jobTitle: String,
         reviewBody: String
-    }
+    },
     { timestamps: true },
   ),
 );
