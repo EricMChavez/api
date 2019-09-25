@@ -34,7 +34,7 @@ exports.handler = async (event, context) => {
         jobTitle: parsedBody.jobTitle,
         reviewBody: parsedBody.reviewBody,
     })
-    review.save()
+    await review.save()
     return {
         statusCode: 200,
         headers: {
