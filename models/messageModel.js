@@ -1,12 +1,17 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+/**
+ * message model
+ */
+import { Schema } from 'mongoose';
+import createModel from '../utils/db';
 
-const getModel = require('./getModel');
-
-const MessageSchema = new Schema({
-    name: String,
-    email: String,
-    messageBody: String
-});
-
-export default getModel('message', MessageSchema); 
+export default createModel(
+  'messages',
+  new Schema(
+    {
+        name: String,
+        email: String,
+        messageBody: String
+    }
+    { timestamps: true },
+  ),
+);

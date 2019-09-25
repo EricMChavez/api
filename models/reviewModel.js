@@ -1,12 +1,17 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+/**
+ * review model
+ */
+import { Schema } from 'mongoose';
+import createModel from '../utils/db';
 
-const getModel = require('./getModel');
-
-const ReviewSchema = new Schema({
-    name: String,
-    jobTitle: String,
-    reviewBody: String
-});
-
-export default getModel('review', ReviewSchema); 
+export default createModel(
+  'reviews',
+  new Schema(
+    {
+        name: String,
+        jobTitle: String,
+        reviewBody: String
+    }
+    { timestamps: true },
+  ),
+);
