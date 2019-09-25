@@ -2,20 +2,6 @@ const mongoose = require('mongoose');
 
 import messageModel from '../models/messageModel';
 
-// check if the model is already declared
-if (!modelAlreadyDeclared()) {
-    const Users = mongoose.model('Users', yourSchema)
-  }
-  
-  function modelAreadyDeclared () {
-    try {
-      mongoose.model('Users')  // it throws an error if the model is still not defined
-      return true
-    } catch (e) {
-      return false
-    }
-  }
-
 exports.handler = async (event, context) => {
     if (event.httpMethod !== "POST") {
         return {
