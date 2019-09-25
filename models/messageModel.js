@@ -2,7 +2,7 @@
  * message model
  */
 import { Schema } from 'mongoose';
-import createModel from '../utils/db';
+import createModel from './createModel';
 
 export default createModel(
   'messages',
