@@ -14,9 +14,6 @@ exports.handler = async (event, context) => {
             };
     }
     const parsedBody = JSON.parse(event.body)
-
-    console.log(parsedBody)
-
     const url = process.env.DB_URL
     mongoose.connect(url, {
     useNewUrlParser: true,

@@ -35,7 +35,7 @@ exports.handler = async (event, context) => {
         email: parsedBody.email,
         messageBody: parsedBody.messageBody,
     })
-    await review.save()
+    await message.save()
     return {
         statusCode: 200,
         headers: {
@@ -44,6 +44,6 @@ exports.handler = async (event, context) => {
         "Access-Control-Allow-Headers": "*",
         "Access-Control-Allow-Methods": "GET, POST, PUT"
         },
-        body: "Thank you for your review"
+        body: "Thank you for your message"
     }
 }
