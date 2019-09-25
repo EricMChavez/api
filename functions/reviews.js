@@ -27,9 +27,9 @@ exports.handler = function(event, context, callback) {
     callback(null, {
         statusCode: 200,
         headers: {
-        'content-type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT',
+        "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT",
         },
         body: "Thank you for your review"
         });
