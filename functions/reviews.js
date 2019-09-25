@@ -7,6 +7,7 @@ exports.handler = async (event, context) => {
             headers: {
                 "content-type": "application/json",
                 "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*",
                 "Access-Control-Allow-Methods": "GET, POST, PUT"
                 },
             body: "This was not a POST request!"
@@ -40,6 +41,7 @@ exports.handler = async (event, context) => {
         headers: {
         "content-type": "application/json",
         "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "*",
         "Access-Control-Allow-Methods": "GET, POST, PUT"
         },
         body: "Thank you for your review"
