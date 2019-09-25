@@ -14,7 +14,7 @@ exports.handler = function(event, context, callback) {
             body: "This was not a POST request!"
             });
     }
-    const parsedBody = JSON.parse(event.body)
+    const parsedBody = event.body
     const url = "mongodb+srv://eric:pUNTOFHI6IGZ3EIZ@cluster0-4coym.gcp.mongodb.net/test?retryWrites=true&w=majority"
     mongoose.connect(url, {
     useNewUrlParser: true,
