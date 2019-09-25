@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+import reviewModel from '../models/reviewModel';
+
 exports.handler = async (event, context) => {
     if (event.httpMethod !== "POST") {
         return {
@@ -20,30 +22,15 @@ exports.handler = async (event, context) => {
     useUnifiedTopology: true
     });
 
-    const Schema = mongoose.Schema;
-
-    const ReviewSchema = new Schema({
-        name: String,
-        jobTitle: String,
-        reviewBody: String
-    });
-
-    let reviewModel;
-
-    try {
-        reviewModel = mongoose.model('review', ReviewSchema);
-    } catch (ex) {
-        reviewModel = mongoose.model('review');
-    }
-
-
     const review = new reviewModel({
         name: parsedBody.name,
         jobTitle: parsedBody.jobTitle,
         reviewBody: parsedBody.reviewBody,
     })
+
     await review.save()
     mongoose.connection.close()
+
     return {
         statusCode: 200,
         headers: {

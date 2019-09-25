@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+import messageModel from '../models/messageModel';
+
 exports.handler = async (event, context) => {
     if (event.httpMethod !== "POST") {
         return {
@@ -20,27 +22,12 @@ exports.handler = async (event, context) => {
     useUnifiedTopology: true
     });
 
-    const Schema = mongoose.Schema;
-
-    const MessageSchema = new Schema({
-        name: String,
-        email: String,
-        messageBody: String
-    });
-
-
-    let messageModel
-    try {
-        messageModel = mongoose.model('message', MessageSchema);
-    } catch (ex) {
-        messageModel = mongoose.model('message');
-    }
-
     const message = new messageModel({
         name: parsedBody.name,
         email: parsedBody.email,
         messageBody: parsedBody.messageBody,
     })
+
     await message.save()
     mongoose.connection.close()
 
