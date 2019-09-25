@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 exports.handler = function(event, context, callback) {
+    console.log('this is the event.httpMethod')
+    console.log(event.httpMethod)
     if (event.httpMethod !== "POST") {
         callback(null, {
             statusCode: 200,
