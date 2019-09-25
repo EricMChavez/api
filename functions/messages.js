@@ -27,15 +27,23 @@ exports.handler = async (event, context) => {
         email: String,
         messageBody: String
     });
-    const Message = mongoose.model('message', MessageSchema);
 
 
-    const message = new Message({
+    let messageModel
+    try {
+        messageModel = mongoose.model('message', MessageSchema);
+    } catch (ex) {
+        messageModel = mongoose.model('message');
+    }
+
+    const message = new messageModel({
         name: parsedBody.name,
         email: parsedBody.email,
         messageBody: parsedBody.messageBody,
     })
     await message.save()
+    mongoose.connection.close()
+
     return {
         statusCode: 200,
         headers: {

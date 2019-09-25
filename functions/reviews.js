@@ -27,15 +27,23 @@ exports.handler = async (event, context) => {
         jobTitle: String,
         reviewBody: String
     });
-    const Review = mongoose.model('review', ReviewSchema);
+
+    let reviewModel;
+
+    try {
+        reviewModel = mongoose.model('review', ReviewSchema);
+    } catch (ex) {
+        reviewModel = mongoose.model('review');
+    }
 
 
-    const review = new Review({
+    const review = new reviewModel({
         name: parsedBody.name,
         jobTitle: parsedBody.jobTitle,
         reviewBody: parsedBody.reviewBody,
     })
     await review.save()
+    mongoose.connection.close()
     return {
         statusCode: 200,
         headers: {
