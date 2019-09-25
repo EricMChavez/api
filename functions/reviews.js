@@ -26,6 +26,11 @@ exports.handler = function(event, context, callback) {
     review.save()
     callback(null, {
         statusCode: 200,
+        headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT',
+        },
         body: "Thank you for your review"
         });
 }
